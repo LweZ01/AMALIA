@@ -40,46 +40,10 @@ Este sistema gestiona:
 supabase==1.x  # Si actualizas, RUEGA que siga compatible
 python-dotenv  # Porque las credenciales NUNCA deben estar en el código (pero probablemente lo estén)
 
-## 🌋 La Pesadilla de las Actualizaciones
-
-### Cuando ELIMINAS un estudiante:
-
-El código ejecuta esta secuencia del TERROR:
-
-```python
-# 1. Eliminar de BD
-supabase_client.delete_estudiante(cedula)
-
-# 2. Recargar tabla principal
-self.load_estudiantes()
-
-# 3. ¿Estamos en vista de grados expandida?
-if hasattr(self, 'estudiantes_grado_container') and self.estudiantes_grado_container.isVisible():
-    # Ocultar y mostrar para forzar refresh (SÍ, ESTO ES REAL)
-    self.estudiantes_grado_container.hide()
-    QTimer.singleShot(100, lambda: self.estudiantes_grado_container.show())
-    
-    # 4. Recargar datos del grado actual
-    if hasattr(self, 'grado_actual_mostrado'):
-        QTimer.singleShot(200, lambda: self.mostrar_estudiantes_grado(self.grado_actual_mostrado))
-
-# 5. Actualizar botones de grados (contador)
-self.load_grados_tab()
-
-# 6. Si hay búsqueda activa, actualizarla
-if hasattr(self, 'search_input') and self.search_input.text().strip():
-    self.perform_search()
-```
-
-**¿Por qué tanto?** Porque PyQt6 no refresca automáticamente. Porque las vistas están acopladas. Porque el desarrollador original odiaba a la humanidad.
-
----
-
 ## Bugs Conocidos (Y los que NO conoces)
 
 1. **Emojis en Botones**
    - En Windows: ✅ Se ven
-   - En Linux: 🤷 Depende
    - En macOS: ✅ Se ven
    - **Solución:** Nadie quiere tocar esto
 
