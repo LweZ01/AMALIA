@@ -278,6 +278,8 @@ Se prohíbe:
 - Eliminar este README
 
 ---
+## Crear Ejecutable utilizando Pyinstaller
+python -m PyInstaller --onefile --noconsole --add-data "assets/escudo.png;assets" --add-data "assets/style.qss;assets" --add-data "assets;assets" --add-data "database;database" --add-data "models;models" --add-data "ui;ui" --add-data ".env;." --hidden-import=pkgutil --hidden-import=pkg_resources --hidden-import=setuptools --hidden-import=os --hidden-import=sys --hidden-import=io --hidden-import=importlib --hidden-import=importlib.metadata --hidden-import=importlib.resources --hidden-import=PyQt6.QtCore --hidden-import=PyQt6.QtGui --hidden-import=PyQt6.QtWidgets --hidden-import=PyQt6.sip --hidden-import=PyQt6.QtSvg --hidden-import=dotenv --hidden-import=psycopg2 --hidden-import=psycopg2._psycopg --hidden-import=psycopg2.extensions --hidden-import=supabase --collect-all supabase --clean main.py
 
 **Última actualización:** 25 de Enero, 2026
 **Última vez que todo funcionó simultáneamente:** ¿Alguna vez?
