@@ -287,3 +287,5 @@ Se prohíbe:
 
 *"En este código, no hay errores. Solo características que aún no entendemos."*
 *- Desarrollador Anónimo, probablemente llorando*
+
+**Esto es una broma y esta muy exagerado**
